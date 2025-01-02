@@ -504,6 +504,10 @@ class ompl_control_generator_t(code_generator_t):
         self.replace_member_functions(self.ompl_ns.member_functions('printControl'))
         # print paths as matrices
         self.replace_member_functions(self.ompl_ns.member_functions('printAsMatrix'))
+        # Make the duration variable of StatePropagator::steer in/out
+        steerFn = self.ompl_ns.class_('StatePropagator').member_function('steer')
+        steerFn.add_transformation((FT.inout(2), FT.inout(3)))
+
         # export ODESolver-derived classes that use Boost.OdeInt
         for odesolver in ['ODEBasicSolver', 'ODEErrorSolver', 'ODEAdaptiveSolver']:
             cls = self.ompl_ns.class_(lambda cls, slv=odesolver: cls.name.startswith(slv))
