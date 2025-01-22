@@ -11,11 +11,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-22.04, macos-13]
+        os: [ubuntu-22.04]
         arch: [x86_64]
-        include:
-          - os: macos-14
-            arch: arm64
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -31,7 +28,7 @@ jobs:
           OMPL_BUILD_ARCH: ${{ matrix.arch }}
           # NOTE: Many combinations of OS, arch, and Python version can be built
           # depending on your patience. For example:
-          CIBW_BUILD: cp3{10,11,12}-macosx_{x86_64,arm64} cp3{7,8,9,10,11,12}-manylinux_x86_64
+          CIBW_BUILD: cp3{10,12}-manylinux_x86_64
           CIBW_BUILD_VERBOSITY: 1
 
       - uses: actions/upload-artifact@v4
