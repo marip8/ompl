@@ -13,6 +13,8 @@ def dll_loader(lib, path):
         ext = '.so'
     fname = path + '/lib' + lib + ext
     if not isfile(fname):
+        fname = path + '/../../lib' + lib + ext
+    if not isfile(fname):
         fname = find_library(lib)
     ctypes.CDLL(fname, ctypes.RTLD_GLOBAL)
 
