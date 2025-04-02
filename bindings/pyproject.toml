@@ -1,5 +1,5 @@
 [project]
-name = "ompl"
+name = "swri-ompl"
 dynamic = ["version", "readme"]
 description = "The Open Motion Planning Library"
 authors=[
