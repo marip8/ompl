@@ -150,7 +150,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name="swri_ompl",
-    version="1.6.1",
+    version="1.6.2",
     description="The Open Motion Planning Library",
     author="Ioan A. Șucan, Mark Moll, Zachary Kingston, Lydia E. Kavraki",
     author_email="zak@rice.edu",
