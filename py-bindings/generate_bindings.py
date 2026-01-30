@@ -455,6 +455,13 @@ class ompl_base_generator_t(code_generator_t):
         except declaration_not_found_t:
             pass
 
+        # Rename the MotionValidator::checkMotion overload
+        cls = self.ompl_ns.class_('MotionValidator')
+        cls.member_function(
+            'checkMotion',
+            arg_types=['::ompl::base::State const *', '::ompl::base::State const *', '::std::pair<ompl::base::State *, double> &']
+        ).rename('checkMotionLastValid')
+
 
 class ompl_control_generator_t(code_generator_t):
     def __init__(self):
